@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { ArrowRight, Eye, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import productsData from '../data/products.json';
@@ -9,13 +9,17 @@ import productsData from '../data/products.json';
 // For the home page "Popular Products", usually just clicking to view details is enough.
 
 const PopularProducts = () => {
-    // Select top 3 or 4 products. Let's pick 3 for a nice grid.
-    const popularProducts = productsData.slice(0, 3).map(product => ({
-        ...product,
-        name: product.title,
-        shortDesc: product.description.split('.')[0] + '.',
-        image: product.image
-    }));
+    // Select 3 random products from the data
+    const popularProducts = useMemo(() => {
+        // Create a copy and shuffle
+        const shuffled = [...productsData].sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, 3).map(product => ({
+            ...product,
+            name: product.title,
+            shortDesc: product.description.split('.')[0] + '.',
+            image: product.image
+        }));
+    }, []);
 
     return (
         <section className="py-20 bg-gray-50">
