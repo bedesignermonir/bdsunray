@@ -32,7 +32,7 @@ const Hero = () => {
                     </h1>
 
                     <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 mb-10 max-w-2xl leading-relaxed">
-                        SR CORPORATION transforms businesses with award-winning commercial solar installations. Reduce overheads, gain energy independence, and build a greener tomorrow.
+                        S R CORPORATION transforms businesses with award-winning commercial solar installations. Reduce overheads, gain energy independence, and build a greener tomorrow.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 sm:items-center">

@@ -11,8 +11,8 @@ const Footer = () => {
                     <div className="col-span-1 md:col-span-2 lg:col-span-1">
                         <div className="flex items-center gap-2 mb-6">
                             {/* Placeholder Logo  */}
-                            <img src="/logo.png" alt="SR CORPORATION" className="h-10 w-10 object-contain bg-white rounded p-1" />
-                            <span className="font-bold text-xl tracking-tight">SR CORPORATION</span>
+                            <img src="/logo.png" alt="S R CORPORATION" className="h-10 w-10 object-contain bg-white rounded p-1" />
+                            <span className="font-bold text-xl tracking-tight">S R CORPORATION</span>
                         </div>
                         <p className="text-gray-400 mb-6 leading-relaxed">
                             Empowering businesses with huge sustainable solar energy solutions. Join the renewable revolution today.
@@ -82,7 +82,7 @@ const Footer = () => {
                 </div>
 
                 <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left text-gray-500 text-sm">
-                    <p>&copy; {new Date().getFullYear()} SR CORPORATION. All rights reserved.</p>
+                    <p>&copy; {new Date().getFullYear()} S R CORPORATION. All rights reserved.</p>
                     <div className="flex gap-6">
                         <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
                         <Link to="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>

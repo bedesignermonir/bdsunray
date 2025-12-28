@@ -57,7 +57,7 @@ const DetailsSection = () => {
                                 Comprehensive Solar Solutions for Every Need
                             </h3>
                             <p className="text-lg text-gray-600 leading-relaxed">
-                                At SR CORPORATION, we bring you the best-in-class solar technology. From residential rooftops to massive industrial setups, our solutions are designed for maximum efficiency and longevity.
+                                At S R CORPORATION, we bring you the best-in-class solar technology. From residential rooftops to massive industrial setups, our solutions are designed for maximum efficiency and longevity.
                             </p>
                         </div>
 

@@ -49,7 +49,7 @@ const Header = () => {
                     <div className="flex-shrink-0 flex items-center">
                         <Link to="/" className="flex items-center gap-2 group">
                             {/* Placeholder Logo or Image */}
-                            <img src="/logo.png" alt="SR CORPORATION" className="h-10 w-10 object-contain" />
+                            <img src="/logo.png" alt="S R CORPORATION" className="h-10 w-10 object-contain" />
 
                         </Link>
                     </div>

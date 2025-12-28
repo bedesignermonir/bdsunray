@@ -6,7 +6,7 @@ const Contact = () => {
         <div className="pt-20 bg-gray-50 min-h-screen">
             <div className="bg-primary py-16 text-center text-white">
                 <h1 className="text-4xl font-bold">Contact Us</h1>
-                <p className="mt-4 text-xl opacity-90">Get in touch with SR CORPORATION</p>
+                <p className="mt-4 text-xl opacity-90">Get in touch with S R CORPORATION</p>
             </div>
 
             <div className="container mx-auto px-4 py-16">
