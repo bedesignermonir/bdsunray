@@ -18,11 +18,25 @@ const Footer = () => {
                             Empowering businesses with huge sustainable solar energy solutions. Join the renewable revolution today.
                         </p>
                         <div className="flex space-x-4">
-                            {[Facebook, Twitter, Linkedin, Instagram].map((Icon, index) => (
-                                <a key={index} href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all duration-300">
-                                    <Icon size={18} />
-                                </a>
-                            ))}
+                            {/* Facebook Link */}
+                            <a href="https://www.facebook.com/share/1BqqaDYqci/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all duration-300">
+                                <Facebook size={18} />
+                            </a>
+
+                            {/* Twitter Link - Add your link below */}
+                            {/* <a href="#" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all duration-300">
+                                <Twitter size={18} />
+                            </a> */}
+
+                            {/* Linkedin Link - Add your link below */}
+                            {/* <a href="#" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all duration-300">
+                                <Linkedin size={18} />
+                            </a> */}
+
+                            {/* Instagram Link - Add your link below */}
+                            {/* <a href="#" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all duration-300">
+                                <Instagram size={18} />
+                            </a> */}
                         </div>
                     </div>
 
