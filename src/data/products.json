@@ -1,0 +1,206 @@
+[
+    {
+        "id": 1,
+        "title": "AC SPD DP (Double Pole Surge Protection Device)",
+        "type": "AC Protection Device",
+        "price": 900,
+        "description": "The AC SPD DP (Double Pole Surge Protection Device) is designed to provide reliable protection for single-phase AC systems by preventing damage from lightning-induced surges and sudden overvoltage events. With its fast-response mechanism, it instantly diverts excess energy, safeguarding inverters, distribution boards, and household or commercial AC equipment. Built with durable, flame-resistant materials, this device ensures long-term stability and consistent performance in harsh electrical environments. Ideal for solar, residential, and industrial applications, the AC SPD DP enhances safety and extends equipment life.",
+        "specs": [
+            "Power: 230V AC (Typical for DP — adjustable if needed)",
+            "Efficiency: High Surge Response",
+            "Type: Double Pole (DP) Type 2 AC SPD",
+            "Warranty: 1 Year (Adjustable)"
+        ],
+        "image": "/products/1.webp",
+        "category": "Protection Devices"
+    },
+    {
+        "id": 2,
+        "title": "DC SPD DP (Double Pole Surge Protection Device)",
+        "type": "DC Protection Device",
+        "price": 900,
+        "description": "The DC SPD DP (Double Pole Surge Protection Device) is engineered to safeguard solar DC systems from lightning surges and sudden overvoltage conditions. Designed for high-speed response, it quickly diverts harmful surge energy to protect solar panels, charge controllers, and inverters. Built with durable and flame-retardant materials, this device ensures stable long-term performance even in harsh outdoor environments. Ideal for residential, commercial, and industrial solar installations, the DC SPD DP enhances system reliability and extends equipment lifespan.",
+        "specs": [
+            "Power: 600–1000V DC (Adjustable based on exact model)",
+            "Efficiency: High Surge Response Protection",
+            "Type: Double Pole (DP) Type 2 DC SPD",
+            "Warranty: 1 Year (Adjustable)"
+        ],
+        "image": "/products/2.webp",
+        "category": "Protection Devices"
+    },
+    {
+        "id": 3,
+        "title": "DC SPD TP (Three Pole Surge Protection Device)",
+        "type": "DC Protection Device",
+        "price": 1800,
+        "description": "The DC SPD TP (Three Pole Surge Protection Device) is designed to provide advanced protection for high-voltage and multi-string solar DC systems. With rapid surge-absorption capability, it effectively diverts dangerous overvoltage caused by lightning strikes or grid disturbances. Its robust, weather-resistant construction ensures long-term durability, making it suitable for residential, commercial, and industrial solar installations. Engineered for stable performance in harsh environments, the DC SPD TP helps protect panels, combiner boxes, and inverters, ensuring extended system lifespan and reliable energy output.",
+        "specs": [
+            "Power: 1000–1500V DC (Adjustable based on your exact model)",
+            "Efficiency: High Surge Protection Response",
+            "Type: Three Pole (TP) Type 2 DC SPD",
+            "Warranty: 1 Year (Adjustable)"
+        ],
+        "image": "/products/3.webp",
+        "category": "Protection Devices"
+    },
+    {
+        "id": 4,
+        "title": "AC SPD TP (Three Pole Surge Protection Device)",
+        "type": "AC Protection Device",
+        "price": 1800,
+        "description": "The AC SPD TP (Three Pole Surge Protection Device) is built to safeguard three-phase AC systems from lightning-induced surges and sudden overvoltage events. With ultra-fast response technology, it rapidly diverts excess electrical energy to protect inverters, distribution panels, and industrial or commercial AC equipment. Constructed with durable, fire-resistant materials, this device ensures stable performance even in harsh operating conditions. Designed for long-term reliability, the AC SPD TP enhances electrical safety, reduces equipment downtime, and extends the lifespan of connected systems.",
+        "specs": [
+            "Power: 380–415V AC (Three-Phase)",
+            "Efficiency: High Surge Response",
+            "Type: Three Pole (TP) Type 2 AC SPD",
+            "Warranty: 1 Year (Adjustable)"
+        ],
+        "image": "/products/4.webp",
+        "category": "Protection Devices"
+    },
+    {
+        "id": 5,
+        "title": "DC Breaker SHL7N-63L",
+        "type": "DC Protection Device",
+        "price": 1400,
+        "description": "The DC Breaker SHL7N-63L is engineered for reliable protection of solar DC circuits, delivering fast and secure disconnection during overload or short-circuit conditions. Built with high-quality components, it ensures stable performance under high-voltage DC loads commonly found in modern solar installations. Its durable, flame-retardant housing and long mechanical lifespan make it ideal for residential, commercial, and industrial PV systems. Designed for ease of installation and consistent safety, the SHL7N-63L helps protect cables, charge controllers, and inverters while enhancing overall system reliability.",
+        "specs": [
+            "Power: Up to 1000V DC (Adjustable based on exact model)",
+            "Efficiency: High Break Response",
+            "Type: DC MCB / 63A Rated (Single or Multiple Pole options)",
+            "Warranty: 1 Year (Adjustable)"
+        ],
+        "image": "/products/5.webp",
+        "category": "Protection Devices"
+    },
+    {
+        "id": 6,
+        "title": "DC Breaker SH47-63L",
+        "type": "DC Protection Device",
+        "price": 800,
+        "description": "The DC Breaker SH47-63L is designed to ensure safe and reliable protection for solar DC circuits, offering fast disconnection during overloads or short-circuit faults. Built with durable, heat-resistant materials, it maintains stable performance under high-voltage DC conditions commonly found in solar installations. Its compact design and smooth switching mechanism make it ideal for residential, commercial, and off-grid systems. Engineered for long operational life and consistent safety, the SH47-63L helps protect solar panels, charge controllers, and inverters while improving overall system reliability.",
+        "specs": [
+            "Power: Up to 600–1000V DC (Depending on model)",
+            "Efficiency: High Break Response",
+            "Type: DC MCB / 63A Rated",
+            "Warranty: 1 Year (Adjustable)"
+        ],
+        "image": "/products/6.webp",
+        "category": "Protection Devices"
+    },
+    {
+        "id": 7,
+        "title": "MPPT Solar Converter",
+        "type": "Solar Charge Controller",
+        "price": 9000,
+        "description": "The MPPT Solar Converter is engineered to maximize energy harvest from solar panels by using advanced Maximum Power Point Tracking technology. It intelligently adjusts the operating point of the panels to ensure optimal power output even under changing weather conditions. Built with high-efficiency circuitry and strong protection features, it ensures stable charging performance, extended battery life, and reliable system operation. Ideal for both off-grid and hybrid solar setups, this MPPT converter delivers superior performance, durability, and energy optimization for modern renewable energy systems.",
+        "specs": [
+            "Power: 12V/24V/48V Auto (Adjustable based on exact model)",
+            "Efficiency: Up to 98%",
+            "Type: MPPT (Maximum Power Point Tracking)",
+            "Warranty: 1 Year (Adjustable)"
+        ],
+        "image": "/products/7.webp",
+        "category": "Charge Controllers"
+    },
+    {
+        "id": 8,
+        "title": "MPDC Solar Converter",
+        "type": "Solar Charge Controller",
+        "price": 5000,
+        "description": "The MPDC Solar Converter is designed to deliver efficient and stable power management for DC solar systems. Built with advanced control technology, it regulates voltage and current to ensure safe and optimized charging performance for batteries. Its durable construction and protective features safeguard the system from overvoltage, overload, and short circuits. Suitable for small to medium solar installations, the MPDC Solar Converter provides reliable performance, improved system stability, and long-term energy efficiency for both residential and commercial use.",
+        "specs": [
+            "Power: 12V/24V DC System Compatible",
+            "Efficiency: High Conversion Efficiency",
+            "Type: MPDC Charge Controller",
+            "Warranty: 1 Year (Adjustable)"
+        ],
+        "image": "/products/8.webp",
+        "category": "Charge Controllers"
+    },
+    {
+        "id": 9,
+        "title": "Modified Sine Wave Inverter 1.2kV",
+        "type": "Power Inverter",
+        "price": 13000,
+        "description": "The Modified Sine Wave Inverter 1.2kV is designed to provide reliable AC power from DC battery sources, making it ideal for home backup systems, small appliances, and solar installations. Engineered with stable conversion technology, it delivers consistent output suitable for everyday electrical loads. Its durable build, protective safety features, and efficient cooling system ensure long-term performance. This inverter is an excellent choice for cost-effective energy solutions where dependable power and easy integration with solar systems are required.",
+        "specs": [
+            "Power: 1200W / 1.2kV Capacity",
+            "Efficiency: Up to 90%",
+            "Type: Modified Sine Wave",
+            "Warranty: 1 Year (Adjustable)"
+        ],
+        "image": "/products/9.webp",
+        "category": "Inverters"
+    },
+    {
+        "id": 10,
+        "title": "Jaixi IP21 Hybrid Inverter 3.6k",
+        "type": "Hybrid Inverter",
+        "price": 32000,
+        "description": "The Jaixi IP21 Hybrid Inverter 3.6k is a high-performance solution designed to seamlessly manage solar, battery, and grid power. With advanced hybrid technology, it ensures efficient energy conversion, stable backup power, and intelligent load management. The IP21-rated enclosure provides protection against dust and limited moisture, making it suitable for residential and commercial indoor installations. Built for durability and smart energy optimization, this inverter delivers reliable solar integration, improved backup performance, and long-term operational stability.",
+        "specs": [
+            "Power: 3.6kW",
+            "Efficiency: Up to 97%",
+            "Type: Hybrid (Solar + Battery + Grid)",
+            "Warranty: 2 Years (Adjustable)",
+            "System voltage: 24v"
+        ],
+        "image": "/products/10.webp",
+        "category": "Hybrid Inverters"
+    },
+    {
+        "id": 11,
+        "title": "Jaixi IP21 Hybrid Inverter 6k",
+        "type": "Hybrid Inverter",
+        "price": 54000,
+        "description": "The Jaixi IP21 Hybrid Inverter 6k is a powerful and versatile energy management solution designed to integrate solar, battery, and grid power seamlessly. With its advanced hybrid technology, it delivers high-efficiency energy conversion, robust backup capability, and intelligent load distribution for both residential and commercial applications. The IP21 protection rating offers resistance to dust and vertical moisture, making it ideal for indoor environments. Built for long-term reliability, this inverter ensures stable performance, optimized solar utilization, and dependable energy backup during outages.",
+        "specs": [
+            "Power: 6kW",
+            "Efficiency: Up to 97%",
+            "Type: Hybrid (Solar + Battery + Grid)",
+            "Warranty: 2 Years (Adjustable)",
+            "System voltage: 48v"
+        ],
+        "image": "/products/11.webp",
+        "category": "Hybrid Inverters"
+    },
+    {
+        "id": 12,
+        "title": "Jaixi IP54 Hybrid Inverter 6k (48V System)",
+        "type": "Hybrid Inverter",
+        "price": 70000,
+        "description": "The Jaixi IP54 Hybrid Inverter 6k is engineered for powerful and efficient solar energy management, supporting seamless integration of solar panels, battery storage, and grid power. With an IP54 protection rating, it is resistant to dust and water splashes, making it suitable for both indoor and semi-outdoor installations. Designed for 48V battery systems, this inverter offers highly stable power conversion, intelligent load control, and strong backup performance during outages. Its advanced hybrid technology ensures maximum solar utilization, improved battery efficiency, and long-term operational reliability for residential and commercial setups.",
+        "specs": [
+            "Power: 6kW",
+            "System Voltage: 48V",
+            "Efficiency: Up to 97%",
+            "Type: Hybrid (Solar + Battery + Grid)",
+            "Warranty: 2 Years (Adjustable)"
+        ],
+        "image": "/products/12.webp",
+        "category": "Hybrid Inverters"
+    },
+    {
+        "id": 13,
+        "title": "Jaixi IP66 Hybrid Inverter 6k (Single Phase, 48V System)",
+        "type": "Hybrid Inverter",
+        "price": 104000,
+        "description": "The Jaixi IP66 Hybrid Inverter 6k is a high-performance, fully weatherproof solution designed for demanding solar energy systems. With an IP66 protection rating, it offers complete resistance against dust, heavy rain, and harsh outdoor conditions, making it ideal for both indoor and outdoor installations. This 6kW single-phase inverter supports 48V battery systems and delivers advanced hybrid functionality, enabling seamless coordination between solar, battery storage, and grid power. Engineered for superior efficiency, stable output, and long-term durability, it ensures maximum solar energy utilization and dependable backup power for homes and commercial facilities.",
+        "specs": [
+            "Power: 6kW",
+            "Phase: Single Phase",
+            "System Voltage: 48V",
+            "Efficiency: Up to 97%",
+            "Type: Hybrid (Solar + Battery + Grid)",
+            "Warranty: 5 Years (Adjustable)"
+        ],
+        "image": "/products/13.webp",
+        "image1": "/products/Jaixi-font.webp",
+        "image2": "/products/Jaixi-back.webp",
+        "image3": "/products/Jaixi-left.webp",
+        "image4": "/products/Jaixi-right.webp",
+        "category": "Hybrid Inverters"
+    }
+]
