@@ -97,10 +97,11 @@ const Footer = () => {
 
                 <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left text-gray-500 text-sm">
                     <p>&copy; {new Date().getFullYear()} S R CORPORATION. All rights reserved.</p>
-                    <div className="flex gap-6">
+                    <div className="flex gap-6 flex-wrap justify-center md:justify-end">
                         <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
                         <Link to="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
                         <Link to="/cookie-policy" className="hover:text-white transition-colors">Cookie Policy</Link>
+                        <Link to="/superMan" className="hover:text-primary transition-colors text-primary">Admin</Link>
                     </div>
                 </div>
             </div>
