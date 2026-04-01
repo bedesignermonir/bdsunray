@@ -10,6 +10,8 @@ import ProductDetails from './pages/ProductDetails';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import CookiePolicy from './pages/CookiePolicy';
+import Superman from './pages/Superman';
+import AdminDashboard from './pages/AdminDashboard';
 
 const AppRoutes = () => {
     return (
@@ -20,7 +22,11 @@ const AppRoutes = () => {
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/category/:category" element={<Products />} />
             <Route path="/products/:id" element={<ProductDetails />} />
+            <Route path="/superMan" element={<AdminDashboard />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/cookie-policy" element={<CookiePolicy />} />

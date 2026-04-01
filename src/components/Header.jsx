@@ -1,166 +1,183 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Phone, MessageCircle } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+
+import SolarPanelIcon from '../assets/Icons/Solar Panel.svg';
+import ComboPackageIcon from '../assets/Icons/Combo Package.svg';
+import SolarIPSIcon from '../assets/Icons/Solar IPS.svg';
+import RegularIPSIcon from '../assets/Icons/Regular IPS.svg';
+import LithiumBatteryIcon from '../assets/Icons/Lithium Battery.svg';
+import SolarChargeControllerIcon from '../assets/Icons/Solar Charge Controller.svg';
+import DCWireIcon from '../assets/Icons/DC Wire.svg';
+import SolarToolsIcon from '../assets/Icons/Solar Tools.svg';
+import StreetLightIcon from '../assets/Icons/Street Light.svg';
+import AVRIcon from '../assets/Icons/AVR.svg';
+import VFDIcon from '../assets/Icons/VFD.svg';
+import OthersIcon from '../assets/Icons/Others.svg';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    const [topOffset, setTopOffset] = useState(40);
+    const topBarRef = React.useRef(null);
 
     // Close mobile menu when route changes
     useEffect(() => {
         setIsOpen(false);
     }, [location]);
 
-    const navItems = [
-        { name: 'Home', href: '/' },
-        { name: 'About', href: '/about' },
-        { name: 'Services', href: '/services' },
-        { name: 'Products', href: '/products' },
-        { name: 'Projects', href: '/projects' },
-        { name: 'Contact', href: '/contact' },
+    // Handle scroll to adjust sidebar/mobile header position
+    useEffect(() => {
+        const handleScroll = () => {
+            if (topBarRef.current) {
+                const height = topBarRef.current.offsetHeight;
+                const offset = Math.max(0, height - window.scrollY);
+                setTopOffset(offset);
+            }
+        };
+
+        // Initial correct calculation on mount/resize
+        handleScroll();
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleScroll);
+        };
+    }, []);
+
+    const categories = [
+        { name: 'SOLAR PANEL', icon: SolarPanelIcon, href: '/category/solar-panel' },
+        { name: 'COMBO PACKAGE', icon: ComboPackageIcon, href: '/category/combo-package' },
+        { name: 'SOLAR IPS', icon: SolarIPSIcon, href: '/category/solar-ips' },
+        { name: 'HOME IPS', icon: RegularIPSIcon, href: '/category/home-ips' },
+        { name: 'LITHIUM BATTERY', icon: LithiumBatteryIcon, href: '/category/lithium-battery' },
+        { name: 'SOLAR CHARGE CONTROLLER', icon: SolarChargeControllerIcon, href: '/category/solar-charge-controller' },
+        { name: 'DC WIRE', icon: DCWireIcon, href: '/category/dc-wire' },
+        { name: 'SOLAR TOOLS', icon: SolarToolsIcon, href: '/category/solar-tools' },
+        { name: 'STREET LIGHT', icon: StreetLightIcon, href: '/category/street-light' },
+        { name: 'AVR', icon: AVRIcon, href: '/category/avr' },
+        { name: 'VFD', icon: VFDIcon, href: '/category/vfd' },
+        { name: 'OTHERS', icon: OthersIcon, href: '/category/others' },
     ];
 
-    const handleNavClick = (href) => {
-        if (href.startsWith('#')) {
-            const element = document.querySelector(href);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    };
-
     return (
-        <header
-            className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-sm shadow-md py-2' : 'bg-white py-4'
-                }`}
-        >
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center">
-                    {/* Logo */}
-                    <div className="flex-shrink-0 flex items-center">
-                        <Link to="/" className="flex items-center gap-2 group">
-                            {/* Placeholder Logo or Image */}
-                            <img src="/logo.png" alt="S R CORPORATION" className="h-10 w-10 object-contain" />
-
-                        </Link>
-                    </div>
-
-                    {/* Desktop Navigation */}
-                    <nav className="hidden md:flex space-x-8 items-center">
-                        {navItems.map((item) => (
-                            item.href.startsWith('#') ? (
-                                <a
-                                    key={item.name}
-                                    href={item.href}
-                                    onClick={(e) => { e.preventDefault(); handleNavClick(item.href); }}
-                                    className="text-sm font-medium text-gray-600 hover:text-primary transition-colors duration-200 uppercase tracking-wider relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full"
-                                >
-                                    {item.name}
-                                </a>
-                            ) : (
-                                <Link
-                                    key={item.name}
-                                    to={item.href}
-                                    className="text-sm font-medium text-gray-600 hover:text-primary transition-colors duration-200 uppercase tracking-wider relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full"
-                                >
-                                    {item.name}
-                                </Link>
-                            )
-                        ))}
-                        <a
-                            href="https://wa.me/8801619031996"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-primary hover:bg-blue-700 text-white px-6 py-2.5 rounded-full font-medium text-sm transition-all shadow-lg hover:shadow-primary/30 transform hover:-translate-y-0.5"
-                        >
-                            Get Quote
+        <>
+            {/* Top Bar - Contact Info (Standard Flow / Relative) */}
+            <div
+                ref={topBarRef}
+                className="relative z-[60] bg-primary text-white py-2 px-4 shadow-md w-full"
+            >
+                <div className="container mx-auto flex flex-col md:flex-row justify-center items-center gap-2 text-sm md:text-base font-semibold text-center leading-tight">
+                    <span className="block">আমাদের যে কোন পণ্য অর্ডার করতে কল বা WhatsApp করুন:</span>
+                    <div className="flex flex-wrap justify-center gap-2 md:gap-4">
+                        <a href="https://wa.me/8801619031996" className="flex items-center gap-1 hover:text-blue-200 transition-colors whitespace-nowrap">
+                            <MessageCircle size={16} /> +880 1619-031996
                         </a>
-                    </nav>
-
-                    {/* Mobile Menu Button */}
-                    <div className="md:hidden flex items-center">
-                        <button
-                            onClick={() => setIsOpen(!isOpen)}
-                            className="text-gray-600 hover:text-primary focus:outline-none p-2"
-                        >
-                            {isOpen ? <X size={28} /> : <Menu size={28} />}
-                        </button>
+                        <span className="hidden md:inline">|</span>
+                        <span className="flex items-center gap-1 whitespace-nowrap">
+                            হট লাইন: <Phone size={16} /> +880 1619-031996
+                        </span>
                     </div>
                 </div>
             </div>
 
-            {/* Mobile Navigation */}
-            {/* Animated Overlay */}
+            {/* Mobile Header (Sticky-ish behavior via Top Offset) */}
             <div
-                className={`fixed inset-0 z-40 bg-gray-900/50 backdrop-blur-sm transition-opacity duration-300 md:hidden ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                    }`}
-                onClick={() => setIsOpen(false)}
-            />
-
-            {/* Drawer */}
-            <div
-                className={`fixed top-0 right-0 z-50 h-full w-[280px] bg-white shadow-2xl transform transition-transform duration-300 ease-in-out md:hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'
-                    }`}
+                className="md:hidden fixed left-0 right-0 z-50 bg-white shadow-sm p-4 flex justify-between items-center h-[60px] transition-all duration-75"
+                style={{ top: `${topOffset}px` }}
             >
-                <div className="flex flex-col h-full">
-                    <div className="flex items-center justify-between p-4 border-b">
-                        <span className="font-bold text-lg text-gray-900">Menu</span>
-                        <button
+                <button
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="text-gray-700 hover:text-primary focus:outline-none"
+                >
+                    {isOpen ? <X size={28} /> : <Menu size={28} />}
+                </button>
+
+                {/* Mobile Logo Center */}
+                <Link to="/" className="absolute left-1/2 transform -translate-x-1/2">
+                    <img src="/logo.png" alt="S R CORPORATION" className="h-10 object-contain" />
+                </Link>
+            </div>
+
+            {/* Sidebar Navigation */}
+            {/* Desktop: Fixed Left (Always Visible) with Dynamic Top */}
+            <aside
+                className={`fixed left-0 z-50 w-[260px] bg-gray-50 shadow-2xl md:shadow-none md:border-r border-gray-200 transform transition-transform duration-300 ease-in-out md:translate-x-0 overflow-y-auto custom-scrollbar ${isOpen ? 'translate-x-0' : '-translate-x-full'
+                    }`}
+                style={{
+                    top: `${topOffset}px`,
+                    height: `calc(100vh - ${topOffset}px)`
+                }}
+            >
+                <div className="flex flex-col min-h-full pt-6">
+                    <nav className="flex-1 px-4 space-y-3">
+                        <Link
+                            to="/"
+                            className={`flex items-center gap-3 px-4 py-3.5 rounded-2xl text-sm font-semibold transition-all duration-300 group border
+                                ${location.pathname === '/'
+                                    ? 'bg-blue-50 text-blue-700 shadow-[inset_4px_4px_8px_rgba(0,0,0,0.1),inset_-4px_-4px_8px_rgba(255,255,255,0.9)] border-blue-100'
+                                    : 'bg-white text-gray-600 shadow-[4px_4px_8px_rgba(0,0,0,0.05),-4px_-4px_8px_rgba(255,255,255,0.9)] border-transparent hover:shadow-[6px_6px_12px_rgba(0,0,0,0.08),-6px_-6px_12px_rgba(255,255,255,0.9)] hover:translate-y-[-1px]'
+                                }`}
                             onClick={() => setIsOpen(false)}
-                            className="p-2 text-gray-500 hover:text-red-500 transition-colors"
                         >
-                            <X size={24} />
-                        </button>
-                    </div>
-                    <div className="flex-1 overflow-y-auto py-4 px-4 space-y-2">
-                        {navItems.map((item) => (
-                            item.href.startsWith('#') ? (
-                                <a
-                                    key={item.name}
-                                    href={item.href}
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        handleNavClick(item.href);
-                                        setIsOpen(false);
-                                    }}
-                                    className="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:text-primary hover:bg-blue-50 transition-all border-l-4 border-transparent hover:border-primary"
-                                >
-                                    {item.name}
-                                </a>
-                            ) : (
+                            <span className={`transition-transform duration-300 group-hover:scale-110 ${location.pathname === '/' ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-500'
+                                }`}>
+                                <Menu size={20} />
+                            </span>
+                            Home
+                        </Link>
+
+                        {categories.map((category) => {
+                            const isActive = location.pathname === category.href;
+                            return (
                                 <Link
-                                    key={item.name}
-                                    to={item.href}
-                                    className="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:text-primary hover:bg-blue-50 transition-all border-l-4 border-transparent hover:border-primary"
+                                    key={category.name}
+                                    to={category.href}
+                                    className={`flex items-center gap-3 px-4 py-3.5 rounded-2xl text-sm font-semibold transition-all duration-300 group border
+                                        ${isActive
+                                            ? 'bg-blue-50 text-blue-700 shadow-[inset_4px_4px_8px_rgba(0,0,0,0.1),inset_-4px_-4px_8px_rgba(255,255,255,0.9)] border-blue-100'
+                                            : 'bg-white text-gray-600 shadow-[4px_4px_8px_rgba(0,0,0,0.05),-4px_-4px_8px_rgba(255,255,255,0.9)] border-transparent hover:shadow-[6px_6px_12px_rgba(0,0,0,0.08),-6px_-6px_12px_rgba(255,255,255,0.9)] hover:translate-y-[-1px]'
+                                        }`}
+                                    onClick={() => setIsOpen(false)}
                                 >
-                                    {item.name}
+                                    <div className={`w-5 h-5 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 ${isActive ? 'opacity-100' : 'opacity-70 group-hover:opacity-100'
+                                        }`}>
+                                        <img
+                                            src={category.icon}
+                                            alt={category.name}
+                                            className="w-full h-full object-contain"
+                                        />
+                                    </div>
+                                    <span className="truncate">{category.name}</span>
                                 </Link>
-                            )
-                        ))}
-                    </div>
-                    <div className="p-4 border-t bg-gray-50">
+                            );
+                        })}
+                    </nav>
+
+                    <div className="p-4 mt-4">
                         <a
                             href="https://wa.me/8801619031996"
                             target="_blank"
                             rel="noopener noreferrer"
-                            onClick={() => setIsOpen(false)}
-                            className="block w-full text-center bg-primary text-white font-bold py-3 px-4 rounded-lg shadow-md hover:bg-blue-700 transition-colors"
+                            className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-primary to-blue-600 text-white font-bold py-3.5 px-4 rounded-2xl shadow-[4px_4px_10px_rgba(21,101,192,0.3)] hover:shadow-[6px_6px_15px_rgba(21,101,192,0.4)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-sm active:shadow-inner"
                         >
+                            <MessageCircle size={18} />
                             Get a Free Quote
                         </a>
                     </div>
                 </div>
-            </div>
-        </header>
+            </aside>
+
+            {/* Overlay for mobile only */}
+            {isOpen && (
+                <div
+                    className="fixed inset-0 z-40 bg-black/50 md:hidden backdrop-blur-sm"
+                    onClick={() => setIsOpen(false)}
+                />
+            )}
+        </>
     );
 };
 

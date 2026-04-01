@@ -1,13 +1,64 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Check, Phone, Share2 } from 'lucide-react';
-import { products } from './Products'; // Import shared data
+import { API_BASE_URL } from '../config';
 
 const ProductDetails = () => {
     const { id } = useParams();
-    const product = products.find(p => p.id === parseInt(id));
+    const [product, setProduct] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [activeImage, setActiveImage] = useState(null);
 
-    const [activeImage, setActiveImage] = React.useState(product.image);
+    useEffect(() => {
+        setLoading(true);
+        fetch(`${API_BASE_URL}/data/products.json`)
+            .then(res => res.json())
+            .then(data => {
+                const foundProduct = data.find(p => p.id === parseInt(id));
+                if (foundProduct && foundProduct.stockStatus !== 'Hidden') {
+                    // Normalize product data structure matching the logic we used in Products.jsx to ensure safety
+                    const normalizedProduct = {
+                        ...foundProduct,
+                        name: foundProduct.title,
+                        fullDesc: foundProduct.description,
+                        stockStatus: foundProduct.stockStatus || 'In Stock',
+                        // Ensure optional images exist
+                        image1: foundProduct.image1,
+                        image2: foundProduct.image2,
+                        image3: foundProduct.image3,
+                        image4: foundProduct.image4,
+                        image5: foundProduct.image5
+                    };
+                    setProduct(normalizedProduct);
+                    setActiveImage(normalizedProduct.image);
+                } else if (foundProduct && foundProduct.stockStatus === 'Hidden') {
+                    // Product is hidden, treat as not found
+                    setProduct(null);
+                }
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error("Failed to load product", err);
+                setLoading(false);
+            });
+    }, [id]);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [id]);
+
+    if (loading) {
+        return <div className="pt-32 text-center">Loading product details...</div>;
+    }
+
+    if (!product) {
+        return (
+            <div className="min-h-screen pt-32 text-center">
+                <h2 className="text-2xl font-bold">Product not found</h2>
+                <Link to="/products" className="text-primary hover:underline mt-4 inline-block">Back to Products</Link>
+            </div>
+        );
+    }
 
     // Collect all available images
     const allImages = [
@@ -18,20 +69,6 @@ const ProductDetails = () => {
         product.image4,
         product.image5
     ].filter(img => img && img !== "");
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-        setActiveImage(product.image);
-    }, [product]);
-
-    if (!product) {
-        return (
-            <div className="min-h-screen pt-32 text-center">
-                <h2 className="text-2xl font-bold">Product not found</h2>
-                <Link to="/products" className="text-primary hover:underline mt-4 inline-block">Back to Products</Link>
-            </div>
-        );
-    }
 
     return (
         <div className="pt-20 min-h-screen bg-gray-50">
@@ -66,8 +103,8 @@ const ProductDetails = () => {
                                             key={idx}
                                             onClick={() => setActiveImage(img)}
                                             className={`w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${activeImage === img
-                                                    ? 'border-primary ring-2 ring-primary/20'
-                                                    : 'border-gray-200 hover:border-primary/50'
+                                                ? 'border-primary ring-2 ring-primary/20'
+                                                : 'border-gray-200 hover:border-primary/50'
                                                 }`}
                                         >
                                             <img
@@ -83,9 +120,18 @@ const ProductDetails = () => {
 
                         {/* Content Section */}
                         <div>
-                            <span className="inline-block px-3 py-1 bg-blue-100 text-primary font-bold rounded-full text-sm mb-4">
-                                {product.category}
-                            </span>
+                            <div className="flex items-center gap-3 mb-4">
+                                <span className="inline-block px-3 py-1 bg-blue-100 text-primary font-bold rounded-full text-sm">
+                                    {product.category}
+                                </span>
+                                <span className={`inline-block px-3 py-1 rounded-full text-sm font-bold ${
+                                    product.stockStatus === 'In Stock' ? 'bg-green-100 text-green-800' :
+                                    product.stockStatus === 'Out of Stock' ? 'bg-red-100 text-red-800' :
+                                    'bg-gray-100 text-gray-800'
+                                }`}>
+                                    {product.stockStatus}
+                                </span>
+                            </div>
                             <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">{product.name}</h1>
                             <div className="flex items-baseline gap-4 mb-8">
                                 <span className="text-4xl font-bold text-gray-900">৳{product.price.toLocaleString()}</span>
@@ -108,7 +154,8 @@ const ProductDetails = () => {
                             <div className="flex flex-col sm:flex-row gap-4 mb-8">
                                 <a
                                     href="tel:+8801309229966"
-                                    className="flex-1 bg-primary text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition-colors shadow-lg hover:shadow-primary/30 flex items-center justify-center gap-2"
+                                    className="flex-1 bg-primary text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition-colors shadow-lg hover:shadow-primary/30 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                    onClick={(e) => product.stockStatus === 'Out of Stock' && e.preventDefault()}
                                 >
                                     <Phone size={20} /> Call Now
                                 </a>
@@ -116,9 +163,14 @@ const ProductDetails = () => {
                                     href="https://wa.me/8801619031996"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex-1 bg-green-500 text-white font-bold py-4 rounded-xl hover:bg-green-600 transition-colors shadow-lg hover:shadow-green-500/30 flex items-center justify-center gap-2"
+                                    className={`flex-1 font-bold py-4 rounded-xl shadow-lg flex items-center justify-center gap-2 ${
+                                        product.stockStatus === 'Out of Stock'
+                                            ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                                            : 'bg-green-500 text-white hover:bg-green-600 transition-colors hover:shadow-green-500/30'
+                                    }`}
+                                    onClick={(e) => product.stockStatus === 'Out of Stock' && e.preventDefault()}
                                 >
-                                    <Share2 size={20} /> Order Now
+                                    <Share2 size={20} /> {product.stockStatus === 'Out of Stock' ? 'Out of Stock' : 'Order Now'}
                                 </a>
                             </div>
                         </div>
