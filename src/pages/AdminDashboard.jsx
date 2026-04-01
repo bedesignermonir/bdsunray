@@ -63,7 +63,7 @@ const AdminDashboard = () => {
             setProducts(data);
         } catch (error) {
             console.error('Failed to fetch products:', error);
-            setStatus({ type: 'error', message: 'Error: Cannot communicate with the local XAMPP backend.' });
+            setStatus({ type: 'error', message: 'Network error: Could not reach the server to fetch product data.' });
         } finally {
             setLoading(false);
         }
@@ -123,7 +123,7 @@ const AdminDashboard = () => {
             return;
         }
 
-        const product = products.find(p => p.id === parseInt(productId));
+        const product = products.find(p => p.id == productId);
         if (product) {
             setFormData({
                 title: product.title || '',
@@ -221,7 +221,7 @@ const AdminDashboard = () => {
             }
         } catch (error) {
             console.error('Submission error:', error);
-            setStatus({ type: 'error', message: 'Failed to connect. Ensure your local PHP server is running.' });
+            setStatus({ type: 'error', message: 'Connection failure: Server is unreachable.' });
         } finally {
             setIsSubmitting(false);
         }

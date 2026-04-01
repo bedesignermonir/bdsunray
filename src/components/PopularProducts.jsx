@@ -8,15 +8,26 @@ const PopularProducts = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        setLoading(true);
         fetch(`${API_BASE_URL}/data/products.json`)
-            .then(res => res.json())
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP Error! Status: ${res.status}`);
+                return res.json();
+            })
             .then(data => {
-                const mappedProducts = data
-                    .filter(product => product.stockStatus !== 'Hidden') // Don't show hidden products
+                console.log('Fetched Data (Popular):', data);
+                
+                // Safety check: ensure data is an array
+                const productsArray = Array.isArray(data) ? data : (data.products || []);
+
+                const mappedProducts = productsArray
+                    .filter(product => product.stockStatus !== 'Hidden')
                     .map(product => ({
                         ...product,
                         name: product.title,
-                        shortDesc: product.description.split('.')[0] + '.',
+                        shortDesc: (product.description && typeof product.description === 'string')
+                            ? product.description.split('.')[0] + '.'
+                            : 'No description.',
                         image: product.image,
                         stockStatus: product.stockStatus || 'In Stock'
                     }));
@@ -24,7 +35,7 @@ const PopularProducts = () => {
                 setLoading(false);
             })
             .catch(err => {
-                console.error("Failed to load products", err);
+                console.error("Failed to load popular products:", err);
                 setLoading(false);
             });
     }, []);

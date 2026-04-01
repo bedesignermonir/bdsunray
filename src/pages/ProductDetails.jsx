@@ -12,9 +12,17 @@ const ProductDetails = () => {
     useEffect(() => {
         setLoading(true);
         fetch(`${API_BASE_URL}/data/products.json`)
-            .then(res => res.json())
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP Error! Status: ${res.status}`);
+                return res.json();
+            })
             .then(data => {
-                const foundProduct = data.find(p => p.id === parseInt(id));
+                console.log('Fetched Data (Details):', data);
+                
+                // Safety check: ensure data is an array
+                const productsArray = Array.isArray(data) ? data : (data.products || []);
+                
+                const foundProduct = productsArray.find(p => p.id == id);
                 if (foundProduct && foundProduct.stockStatus !== 'Hidden') {
                     // Normalize product data structure matching the logic we used in Products.jsx to ensure safety
                     const normalizedProduct = {
@@ -38,7 +46,7 @@ const ProductDetails = () => {
                 setLoading(false);
             })
             .catch(err => {
-                console.error("Failed to load product", err);
+                console.error("Failed to load product detail:", err);
                 setLoading(false);
             });
     }, [id]);

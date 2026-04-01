@@ -66,14 +66,25 @@ const Products = () => {
     const { category } = useParams();
 
     useEffect(() => {
+        setLoading(true);
         fetch(`${API_BASE_URL}/data/products.json`)
-            .then(res => res.json())
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP Error! Status: ${res.status}`);
+                return res.json();
+            })
             .then(data => {
-                const mappedProducts = data.map(product => ({
+                console.log('Fetched Data (Products):', data);
+                
+                // Safety check: ensure data is an array
+                const productsArray = Array.isArray(data) ? data : (data.products || []);
+                
+                const mappedProducts = productsArray.map(product => ({
                     ...product,
                     name: product.title,
                     fullDesc: product.description,
-                    shortDesc: product.description.split('.')[0] + '.',
+                    shortDesc: (product.description && typeof product.description === 'string') 
+                        ? product.description.split('.')[0] + '.' 
+                        : 'No description.',
                     // Ensure image path is absolute from public
                     image: product.image,
                     // Add support for multiple images
@@ -92,7 +103,7 @@ const Products = () => {
                 setLoading(false);
             })
             .catch(err => {
-                console.error("Failed to load products", err);
+                console.error("Failed to load products:", err);
                 setLoading(false);
             });
     }, []);
